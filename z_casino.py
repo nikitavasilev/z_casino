@@ -46,11 +46,11 @@ def choose_nb():
   print("You just choosed to bet on the number " + str(choose_nb.number) + ".")
 
 def money():
-  bet = input("How much money do you want to bet on it?\n> ")
+  money.bet = input("How much money do you want to bet on it?\n> ")
   
   try:
-    bet = int(bet)
-    assert bet >= 2 and bet <= 500000
+    money.bet = int(money.bet)
+    assert money.bet >= 2 and money.bet <= 500000
   except ValueError:
     print("You did not entered any bet.")
     money()
@@ -58,12 +58,29 @@ def money():
     print("Your bet must be at least $2 and a maximum of $500 000.")
     money()
 
-  print("\nYou bet $" + str(bet) + " on the number " + str(choose_nb.number) +".")
-  print("\nThe bets are made. May the best win!")
+  print("\nYou bet $" + str(money.bet) + " on the number " + str(choose_nb.number) +".")
+  print("\nThe bets are made. May the best win!\n")
+
+def game():
+  winning_nb = randrange(50)
+  print("The ball stopped at the number " + str(winning_nb) + ".")
+  if winning_nb == choose_nb.number:
+    money.bet = money.bet * 3
+    print("Congratulations! You won $" + str(money.bet) + ".")
+  elif (choose_nb.number % 2 == 0) and (winning_nb % 2 == 0):
+    money.bet = money.bet * 2
+    print("Your bet on " + str(choose_nb.number) + " and the winning number " + str(winning_nb) + " are both even!")
+    print("Congrats! You won $" + str(money.bet) + ".")
+  elif (choose_nb.number % 3 == 0) and (winning_nb % 3 == 0):
+    money.bet = money.bet * 2
+    print("Your bet on " + str(choose_nb.number) + " and the winning number " + str(winning_nb) + " are both odd!")
+    print("Congrats! You won $" + str(money.bet) + ".")
+  else:
+    print("Sorry pal. You lost your money..")
 
 def perform():
   choose_nb()
   money()
-  winning_nb = randrange(50)
+  game()
 
 perform()
