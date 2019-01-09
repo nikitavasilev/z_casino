@@ -31,57 +31,57 @@ welcome = """
 print(welcome)
 
 def choose_nb():
-  choose_nb.number = input("\nPlease choose a number between 0 et 49:\n> ")
-  
-  try:
-    choose_nb.number = int(choose_nb.number)
-    assert choose_nb.number >= 0 and choose_nb.number <= 49
-  except ValueError:
-    print("You did not enter a number.")
-    choose_nb()
-  except AssertionError:
-    print("The number entered is less than 0 or superior to 49, please retry.")
-    choose_nb()
+    choose_nb.number = input("\nPlease choose a number between 0 et 49:\n> ")
+    
+    try:
+        choose_nb.number = int(choose_nb.number)
+        assert choose_nb.number >= 0 and choose_nb.number <= 49
+    except ValueError:
+        print("You did not enter a number.")
+        choose_nb()
+    except AssertionError:
+        print("The number entered is less than 0 or superior to 49, please retry.")
+        choose_nb()
 
-  print("You just choosed to bet on the number " + str(choose_nb.number) + ".\n")
+    print("You just choosed to bet on the number " + str(choose_nb.number) + ".\n")
 
 def money():
-  print("How much money do you want to bet on it?")
-  money.bet = input("(Your bet must be at least $2 and a maximum of $500 000.)\n> ")
-  
-  try:
-    money.bet = int(money.bet)
-    assert money.bet >= 2 and money.bet <= 500000
-  except ValueError:
-    print("You did not entered any bet.")
-    money()
-  except AssertionError:
-    print("Your bet must be at least $2 and a maximum of $500 000.")
-    money()
+    print("How much money do you want to bet on it?")
+    money.bet = input("(Your bet must be at least $2 and a maximum of $500 000.)\n> ")
+    
+    try:
+        money.bet = int(money.bet)
+        assert money.bet >= 2 and money.bet <= 500000
+    except ValueError:
+        print("You did not entered any bet.")
+        money()
+    except AssertionError:
+        print("Your bet must be at least $2 and a maximum of $500 000.")
+        money()
 
-  print("\nYou bet $" + str(money.bet) + " on the number " + str(choose_nb.number) +".")
-  print("\nThe bets are made. May the best win!\n")
+    print("\nYou bet $" + str(money.bet) + " on the number " + str(choose_nb.number) +".")
+    print("\nThe bets are made. May the best win!\n")
 
 def game():
-  winning_nb = randrange(50)
-  print("The ball stopped at the number " + str(winning_nb) + ".")
-  if winning_nb == choose_nb.number:
-    money.bet = money.bet * 3
-    print("Congratulations! You won $" + str(money.bet) + ".")
-  elif (choose_nb.number % 2 == 0) and (winning_nb % 2 == 0):
-    money.bet = money.bet / 2
-    print("Your bet on " + str(choose_nb.number) + " and the winning number " + str(winning_nb) + " are both even!")
-    print("\nNot bad! You lost only the half of your bet. You've got $" + str(money.bet) + " left.")
-  elif (choose_nb.number % 2 != 0) and (winning_nb % 2 != 0):
-    money.bet = money.bet / 2
-    print("Your bet on " + str(choose_nb.number) + " and the winning number " + str(winning_nb) + " are both odd!")
-    print("\nNot bad! You lost only the half of your bet. You've got $" + str(money.bet) + " left.")
-  else:
-    print("Sorry pal. You lost your money..")
+    winning_nb = randrange(50)
+    print("The ball stopped at the number " + str(winning_nb) + ".")
+    if winning_nb == choose_nb.number:
+        money.bet = money.bet * 3
+        print("Congratulations! You won $" + str(money.bet) + ".")
+    elif (choose_nb.number % 2 == 0) and (winning_nb % 2 == 0):
+        money.bet = money.bet / 2
+        print("Your bet on " + str(choose_nb.number) + " and the winning number " + str(winning_nb) + " are both even!")
+        print("\nNot bad! You lost only the half of your bet. You've got $" + str(money.bet) + " left.")
+    elif (choose_nb.number % 2 != 0) and (winning_nb % 2 != 0):
+        money.bet = money.bet / 2
+        print("Your bet on " + str(choose_nb.number) + " and the winning number " + str(winning_nb) + " are both odd!")
+        print("\nNot bad! You lost only the half of your bet. You've got $" + str(money.bet) + " left.")
+    else:
+        print("Sorry pal. You lost your money..")
 
 def perform():
-  choose_nb()
-  money()
-  game()
+    choose_nb()
+    money()
+    game()
 
 perform()
