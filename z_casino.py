@@ -43,10 +43,11 @@ def choose_nb():
     print("The number entered is less than 0 or superior to 49, please retry.")
     choose_nb()
 
-  print("You just choosed to bet on the number " + str(choose_nb.number) + ".")
+  print("You just choosed to bet on the number " + str(choose_nb.number) + ".\n")
 
 def money():
-  money.bet = input("How much money do you want to bet on it?\n> ")
+  print("How much money do you want to bet on it?")
+  money.bet = input("(Your bet must be at least $2 and a maximum of $500 000.)\n> ")
   
   try:
     money.bet = int(money.bet)
@@ -68,13 +69,13 @@ def game():
     money.bet = money.bet * 3
     print("Congratulations! You won $" + str(money.bet) + ".")
   elif (choose_nb.number % 2 == 0) and (winning_nb % 2 == 0):
-    money.bet = money.bet * 2
+    money.bet = money.bet / 2
     print("Your bet on " + str(choose_nb.number) + " and the winning number " + str(winning_nb) + " are both even!")
-    print("Congrats! You won $" + str(money.bet) + ".")
-  elif (choose_nb.number % 3 == 0) and (winning_nb % 3 == 0):
-    money.bet = money.bet * 2
+    print("\nNot bad! You lost only the half of your bet. You've got $" + str(money.bet) + " left.")
+  elif (choose_nb.number % 2 != 0) and (winning_nb % 2 != 0):
+    money.bet = money.bet / 2
     print("Your bet on " + str(choose_nb.number) + " and the winning number " + str(winning_nb) + " are both odd!")
-    print("Congrats! You won $" + str(money.bet) + ".")
+    print("\nNot bad! You lost only the half of your bet. You've got $" + str(money.bet) + " left.")
   else:
     print("Sorry pal. You lost your money..")
 
