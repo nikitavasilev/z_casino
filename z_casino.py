@@ -103,9 +103,15 @@ def game():
 
     print("Your current balance is now: $" + str(deposit.bank_deposit) + ".")
 
-    if (deposit.bank_deposit < 2):
+    if (deposit.bank_deposit > 2):
+        end = input("\nDo you want to quit the table? [Y/n]\n> ")
+        if (end == "y" or end == "Y" or end == "yes" or end == "Yes"):
+            print("Your earnings are estimated at $" + str(deposit.bank_deposit) + ".")
+            print("You leave the casino with your winnings.")
+            quit()
+    else:
         print("You've got no money left on your bank account.")
-        retry = input("Do you want to make another deposit? Y/n\n> ")
+        retry = input("Do you want to make another deposit? [Y/n]\n> ")
         if (retry == "y" or retry == "Y" or retry == "yes" or retry == "Yes"):
             deposit()
         elif (retry == "n" or retry == "N" or retry == "no" or retry == "No"):
@@ -126,4 +132,5 @@ def main():
         money()
         game()
 
-main()
+if __name__ == "__main__":
+  main()
