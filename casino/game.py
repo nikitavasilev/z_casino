@@ -25,16 +25,16 @@ def game():
 
     if (deposit.bank_deposit > 2):
         end = input("\nDo you want to quit the table? [Y/n]\n> ")
-        if (end == "y" or end == "Y" or end == "yes" or end == "Yes"):
+        if (end.lower() == "y" or end.lower() == "yes"):
             print("Your earnings are estimated at $" + str(deposit.bank_deposit) + ".")
             print("You leave the casino with your winnings.")
             quit()
     else:
         print("You've got no money left on your bank account.")
         retry = input("Do you want to make another deposit? [Y/n]\n> ")
-        if (retry == "y" or retry == "Y" or retry == "yes" or retry == "Yes"):
+        if (retry.lower() == "y" or retry.lower() == "yes"):
             deposit()
-        elif (retry == "n" or retry == "N" or retry == "no" or retry == "No"):
+        elif (retry.lower() == "n" or retry.lower() == "no"):
             print("Okay mate. See you soon!")
             quit()
         else:
